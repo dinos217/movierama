@@ -24,7 +24,8 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper = Mappers.getMapper(UserMapper.class);
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder
+    ) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
@@ -34,11 +35,14 @@ public class UserServiceImpl implements UserService {
     public UserDto registerUser(UserDto userDto) {
 
         if (userRepository.existsByUsernameOrEmail(userDto.getUsername(), userDto.getEmail())) {
+            logger.info("Username: " + userDto.getUsername() + " or email: " + userDto.getEmail() + " already exists.");
             throw new InvalidRequestException("Given username or email already exists.");
         }
 
         User user = userMapper.userDtoToUser(userDto);
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+
+        logger.info("SUCCESS: User with username: " + userDto.getUsername() + " registered successfully!");
 
         return userMapper.userToUserDto(userRepository.save(user));
     }

@@ -5,8 +5,6 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 @Data
 @Entity
@@ -31,11 +29,8 @@ public class Movie implements Serializable {
     @Column(name = "duration")
     private Long duration;
 
-    @Column(name = "addedBy")
-    private String addedByUsername;
-
     @ToString.Exclude
     @ManyToOne
-    private User addedBy;
+    private User user;
 
 }

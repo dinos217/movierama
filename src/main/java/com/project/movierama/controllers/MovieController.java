@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController(value = "/movies")
+@RestController(value = "/movie")
 public class MovieController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
