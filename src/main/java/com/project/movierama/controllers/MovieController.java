@@ -1,6 +1,6 @@
 package com.project.movierama.controllers;
 
-import com.project.movierama.dtos.MovieDto;
+import com.project.movierama.dtos.MovieResponseDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
@@ -15,7 +15,7 @@ public class MovieController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<MovieDto> save(@RequestBody MovieDto movieDto) {
+    public ResponseEntity<MovieResponseDto> save(@RequestBody MovieResponseDto movieDto) {
 
         return null;
     }

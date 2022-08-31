@@ -1,6 +1,7 @@
 package com.project.movierama.entities;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.ToString;
 
 import javax.persistence.*;

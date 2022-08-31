@@ -1,6 +1,7 @@
 package com.project.movierama.services;
 
-import com.project.movierama.dtos.UserDto;
+import com.project.movierama.dtos.UserRequestDto;
+import com.project.movierama.dtos.UserResponseDto;
 import com.project.movierama.entities.User;
 import com.project.movierama.exceptions.InvalidRequestException;
 import com.project.movierama.mappers.UserMapper;
@@ -32,7 +33,7 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public UserDto registerUser(UserDto userDto) {
+    public UserResponseDto registerUser(UserRequestDto userDto) {
 
         if (userRepository.existsByUsernameOrEmail(userDto.getUsername(), userDto.getEmail())) {
             logger.info("Username: " + userDto.getUsername() + " or email: " + userDto.getEmail() + " already exists.");
@@ -48,7 +49,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto findUser(UserDto userDto) {
+    public UserResponseDto findUser(UserRequestDto userDto) {
         return null;
     }
 }

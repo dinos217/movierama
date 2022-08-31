@@ -5,9 +5,7 @@ import com.project.movierama.dtos.UserResponseDto;
 import org.springframework.stereotype.Service;
 
 @Service
-public interface UserService {
+public interface AuthService {
 
-    UserResponseDto registerUser(UserRequestDto userDto);
-
-    UserResponseDto findUser(UserRequestDto userDto);
+    UserResponseDto authenticate(UserRequestDto userRequestDto) throws Exception;
 }

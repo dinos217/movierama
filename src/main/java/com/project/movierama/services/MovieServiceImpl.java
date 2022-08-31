@@ -1,6 +1,7 @@
 package com.project.movierama.services;
 
-import com.project.movierama.dtos.MovieDto;
+import com.project.movierama.dtos.MovieRequestDto;
+import com.project.movierama.dtos.MovieResponseDto;
 import com.project.movierama.entities.Movie;
 import com.project.movierama.exceptions.InvalidRequestException;
 import com.project.movierama.mappers.MovieMapper;
@@ -28,7 +29,7 @@ public class MovieServiceImpl implements MovieService {
 
     @Transactional
     @Override
-    public MovieDto save(MovieDto movieDto) {
+    public MovieResponseDto save(MovieRequestDto movieDto) {
 
         if (movieRepository.existsByTitleAndReleaseYear(movieDto.getTitle(), movieDto.getReleaseYear())) {
             throw new InvalidRequestException("Movie is already added by another user.");
