@@ -10,5 +10,5 @@ public class MovieRequestDto {
     private String title;
     private Short releaseYear;
     private String plot;
-    private Long duration;
+    private Long userId;
 }

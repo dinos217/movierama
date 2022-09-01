@@ -54,7 +54,4 @@ public class AuthenticationController {
     public String dashboard() {
         return "the f* dashboard mf";
     }
-
-    //https://youtu.be/1XnPLWJwiHM?t=4999
-    //https://www.youtube.com/watch?v=QwQuro7ekvc
 }

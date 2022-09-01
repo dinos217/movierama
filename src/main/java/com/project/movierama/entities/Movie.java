@@ -27,9 +27,6 @@ public class Movie implements Serializable {
     @Column(name = "plot")
     private String plot;
 
-    @Column(name = "duration")
-    private Long duration;
-
     @ToString.Exclude
     @ManyToOne
     private User user;
