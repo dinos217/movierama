@@ -6,6 +6,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -26,6 +27,9 @@ public class Movie implements Serializable {
 
     @Column(name = "plot")
     private String plot;
+
+    @Column(name = "date_added")
+    private LocalDate dateAdded;
 
     @ToString.Exclude
     @ManyToOne

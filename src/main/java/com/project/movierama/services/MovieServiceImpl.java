@@ -19,6 +19,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -45,10 +46,11 @@ public class MovieServiceImpl implements MovieService {
         }
 
         User addedByUser = userRepository.findById(movieDto.getUserId())
-                .orElseThrow(() -> new BadRequestException("User with id: " + movieDto.getUserId() + " does not exist."));
+                .orElseThrow(() -> new BadRequestException("User with id " + movieDto.getUserId() + " does not exist."));
 
         Movie movie = movieMapper.movieDtoToMovie(movieDto);
         movie.setUser(addedByUser);
+        movie.setDateAdded(LocalDate.now());
         movieRepository.save(movie);
 
         return movieMapper.movieToMovieDto(movie);
@@ -65,7 +67,7 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public Page<MovieResponseDto> findAllByUser(Pageable pageable, Long id) {
 
-        if (!userRepository.existsById(id)) throw new BadRequestException("User with id: " + id + " does not exist.");
+        if (!userRepository.existsById(id)) throw new BadRequestException("User with id " + id + " does not exist.");
 
         Page<Movie> moviesFromDb = movieRepository.findAllByUser(id, pageable);
 
