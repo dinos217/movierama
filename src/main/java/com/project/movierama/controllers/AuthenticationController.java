@@ -3,6 +3,7 @@ package com.project.movierama.controllers;
 import com.project.movierama.dtos.UserRequestDto;
 import com.project.movierama.dtos.UserResponseDto;
 import com.project.movierama.services.AuthService;
+import com.project.movierama.utils.MovieramaApiMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,14 +27,12 @@ public class AuthenticationController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<UserResponseDto> login(@RequestBody UserRequestDto userRequestDto) throws Exception {
+    public ResponseEntity<MovieramaApiMessage> login(@RequestBody UserRequestDto userRequestDto) throws Exception {
 
         logger.info("Started authentication of user: " + userRequestDto.getUsername());
 
         try {
-            UserResponseDto userResponseDto = authService.authenticate(userRequestDto);
-            logger.info("SUCCESS: User: '" + userRequestDto.getUsername() + "' logged in successfully");
-            return ResponseEntity.status(HttpStatus.OK).body(userResponseDto);
+            return ResponseEntity.status(HttpStatus.OK).body(authService.authenticate(userRequestDto));
         } catch (BadCredentialsException e) {
             logger.info("ERROR: Bad login attempt.");
             throw new BadCredentialsException("Invalid credentials.");

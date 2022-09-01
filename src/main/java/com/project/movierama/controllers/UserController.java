@@ -2,6 +2,7 @@ package com.project.movierama.controllers;
 
 import com.project.movierama.dtos.UserRequestDto;
 import com.project.movierama.dtos.UserResponseDto;
+import com.project.movierama.entities.Reaction;
 import com.project.movierama.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

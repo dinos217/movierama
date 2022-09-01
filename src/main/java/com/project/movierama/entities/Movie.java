@@ -7,6 +7,8 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -35,5 +37,9 @@ public class Movie implements Serializable {
     @ToString.Exclude
     @ManyToOne
     private User user;
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reaction> reactions = new ArrayList<>();
 
 }

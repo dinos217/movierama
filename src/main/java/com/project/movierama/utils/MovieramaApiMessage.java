@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @Setter
-public class MovieramaErrorMessage {
+public class MovieramaApiMessage {
 
     private HttpStatus status;
     private int statusCode;

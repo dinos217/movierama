@@ -4,10 +4,12 @@ import com.project.movierama.dtos.UserRequestDto;
 import com.project.movierama.dtos.UserResponseDto;
 import com.project.movierama.mappers.UserMapper;
 import com.project.movierama.repositories.UserRepository;
+import com.project.movierama.utils.MovieramaApiMessage;
 import org.mapstruct.factory.Mappers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -33,21 +35,23 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public UserResponseDto authenticate(UserRequestDto userRequestDto) {
+    public MovieramaApiMessage authenticate(UserRequestDto userRequestDto) {
 
         Authentication authentication;
         authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
                 userRequestDto.getUsername(), userRequestDto.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        return buildUserResponseDto(userRequestDto);
+
+        logger.info("SUCCESS: User '" + userRequestDto.getUsername() + "' logged in successfully");
+
+        return getMovieramaApiMessage();
     }
 
-    private UserResponseDto buildUserResponseDto(UserRequestDto userRequestDto) {
-        UserResponseDto userResponseDto = new UserResponseDto();
-        userResponseDto.setName(userRequestDto.getName());
-        userResponseDto.setSurname(userRequestDto.getSurname());
-        userResponseDto.setEmail(userRequestDto.getEmail());
-        userResponseDto.setUsername(userRequestDto.getUsername());
-        return userResponseDto;
+    private MovieramaApiMessage getMovieramaApiMessage() {
+        MovieramaApiMessage apiMessage = new MovieramaApiMessage();
+        apiMessage.setStatus(HttpStatus.OK);
+        apiMessage.setStatusCode(HttpStatus.OK.value());
+        apiMessage.setMessage("Log in successful.");
+        return apiMessage;
     }
 }

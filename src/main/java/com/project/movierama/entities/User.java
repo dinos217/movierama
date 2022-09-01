@@ -38,4 +38,8 @@ public class User implements Serializable {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Movie> moviesAdded = new ArrayList<>();
 
+    @ToString.Exclude
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reaction> reactions = new ArrayList<>();
+
 }
