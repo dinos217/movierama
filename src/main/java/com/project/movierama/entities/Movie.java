@@ -25,6 +25,7 @@ public class Movie implements Serializable {
     @Column(name = "release_year")
     private Short releaseYear;
 
+    @Lob
     @Column(name = "plot")
     private String plot;
 

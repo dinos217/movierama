@@ -16,7 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/movie")
+@RequestMapping(value = "/movies")
 public class MovieController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

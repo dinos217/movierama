@@ -3,7 +3,6 @@ package com.project.movierama.controllers;
 import com.project.movierama.dtos.UserRequestDto;
 import com.project.movierama.dtos.UserResponseDto;
 import com.project.movierama.services.AuthService;
-import com.project.movierama.services.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,20 +18,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthenticationController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
-    private UserService userService;
     private AuthService authService;
 
     @Autowired
-    public AuthenticationController(UserService userService, AuthService authService) {
-        this.userService = userService;
+    public AuthenticationController(AuthService authService) {
         this.authService = authService;
-    }
-
-    @PostMapping("/register")
-    public ResponseEntity<UserResponseDto> register(@RequestBody UserRequestDto userRequestDto) {
-
-        logger.info("Started saving a new user...");
-        return ResponseEntity.status(HttpStatus.OK).body(userService.registerUser(userRequestDto));
     }
 
     @PostMapping("/login")

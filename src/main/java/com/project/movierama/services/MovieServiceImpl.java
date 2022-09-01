@@ -19,6 +19,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -37,6 +38,7 @@ public class MovieServiceImpl implements MovieService {
         this.userRepository = userRepository;
     }
 
+    @Transactional
     @Override
     public MovieResponseDto save(MovieRequestDto movieDto) {
 

@@ -26,7 +26,7 @@ public class MovieramaExceptionHandler {
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
     }
 
-    @ExceptionHandler(InvalidRequestException.class)
+    @ExceptionHandler(BadRequestException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
     public ResponseEntity<MovieramaErrorMessage> processValidationError(BadRequestException e) {

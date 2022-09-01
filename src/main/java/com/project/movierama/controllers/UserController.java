@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/users")
 public class UserController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -23,6 +23,12 @@ public class UserController {
         this.userService = userService;
     }
 
+    @PostMapping("/register")
+    public ResponseEntity<UserResponseDto> register(@RequestBody UserRequestDto userRequestDto) {
+
+        logger.info("Started saving a new user...");
+        return ResponseEntity.status(HttpStatus.OK).body(userService.registerUser(userRequestDto));
+    }
 
 
 }
