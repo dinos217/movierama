@@ -1,5 +1,6 @@
 package com.project.movierama.controllers;
 
+import com.project.movierama.dtos.LoginRequestDto;
 import com.project.movierama.dtos.UserRequestDto;
 import com.project.movierama.services.AuthService;
 import com.project.movierama.utils.MovieramaApiMessage;
@@ -26,12 +27,12 @@ public class AuthenticationController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<MovieramaApiMessage> login(@RequestBody UserRequestDto userRequestDto) throws Exception {
+    public ResponseEntity<MovieramaApiMessage> login(@RequestBody LoginRequestDto loginRequestDto) throws Exception {
 
-        logger.info("Started authentication of user: " + userRequestDto.getUsername());
+        logger.info("Started authentication of user: " + loginRequestDto.getUsername());
 
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(authService.authenticate(userRequestDto));
+            return ResponseEntity.status(HttpStatus.OK).body(authService.authenticate(loginRequestDto));
         } catch (BadCredentialsException e) {
             logger.info("ERROR: Bad login attempt.");
             throw new BadCredentialsException("Invalid credentials.");

@@ -31,6 +31,7 @@ public class MovieController {
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<MovieResponseDto> save(@RequestBody MovieRequestDto movieRequestDto) {
 
+        logger.info("Started saving a new movie...");
         return ResponseEntity.status(HttpStatus.OK).body(movieService.save(movieRequestDto));
     }
 
