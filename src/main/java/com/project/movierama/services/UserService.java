@@ -8,6 +8,4 @@ import org.springframework.stereotype.Service;
 public interface UserService {
 
     UserResponseDto registerUser(UserRequestDto userDto);
-
-    UserResponseDto findUser(UserRequestDto userDto);
 }

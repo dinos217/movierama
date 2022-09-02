@@ -1,7 +1,6 @@
 package com.project.movierama.controllers;
 
 import com.project.movierama.dtos.UserRequestDto;
-import com.project.movierama.dtos.UserResponseDto;
 import com.project.movierama.services.AuthService;
 import com.project.movierama.utils.MovieramaApiMessage;
 import org.slf4j.Logger;

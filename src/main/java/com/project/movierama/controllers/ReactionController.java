@@ -1,11 +1,8 @@
 package com.project.movierama.controllers;
 
-import com.project.movierama.dtos.MovieRequestDto;
-import com.project.movierama.dtos.MovieResponseDto;
 import com.project.movierama.dtos.ReactionDto;
 import com.project.movierama.dtos.ReactionRequestDto;
 import com.project.movierama.services.ReactionService;
-import com.project.movierama.utils.MovieramaApiMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

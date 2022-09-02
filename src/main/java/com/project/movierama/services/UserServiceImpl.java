@@ -13,8 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
-
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -25,13 +23,11 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper = Mappers.getMapper(UserMapper.class);
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder
-    ) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
-    @Transactional
     @Override
     public UserResponseDto registerUser(UserRequestDto userDto) {
 
@@ -46,10 +42,5 @@ public class UserServiceImpl implements UserService {
         logger.info("SUCCESS: User with username: " + userDto.getUsername() + " registered successfully!");
 
         return userMapper.userToUserDto(userRepository.save(user));
-    }
-
-    @Override
-    public UserResponseDto findUser(UserRequestDto userDto) {
-        return null;
     }
 }

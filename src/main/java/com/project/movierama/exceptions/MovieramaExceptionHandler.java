@@ -20,7 +20,7 @@ public class MovieramaExceptionHandler {
     @ResponseBody
     public ResponseEntity<MovieramaApiMessage> processValidationError(InvalidRequestException e) {
 
-        logger.info("ERROR --> "+ e.getMessage());
+        logger.info("ERROR --> " + e.getMessage());
 
         MovieramaApiMessage response = buildMovieramaErrorMessage(e, HttpStatus.CONFLICT);
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
@@ -31,7 +31,7 @@ public class MovieramaExceptionHandler {
     @ResponseBody
     public ResponseEntity<MovieramaApiMessage> processValidationError(BadRequestException e) {
 
-        logger.info("ERROR --> "+ e.getMessage());
+        logger.info("ERROR --> " + e.getMessage());
 
         MovieramaApiMessage response = buildMovieramaErrorMessage(e, HttpStatus.BAD_REQUEST);
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);

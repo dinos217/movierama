@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface MovieService {
 
-    MovieResponseDto save (MovieRequestDto movieDto);
+    MovieResponseDto save(MovieRequestDto movieDto);
 
     Page<MovieResponseDto> findAll(Pageable pageable);
 

@@ -1,7 +1,6 @@
 package com.project.movierama.services;
 
 import com.project.movierama.dtos.UserRequestDto;
-import com.project.movierama.dtos.UserResponseDto;
 import com.project.movierama.mappers.UserMapper;
 import com.project.movierama.repositories.UserRepository;
 import com.project.movierama.utils.MovieramaApiMessage;

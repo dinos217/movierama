@@ -7,5 +7,5 @@ import org.mapstruct.Mapper;
 @Mapper
 public interface ReactionMapper {
 
-    ReactionDto reactionToReactionDto(Reaction reaction);
+//    ReactionDto reactionToReactionDto(Reaction reaction);
 }

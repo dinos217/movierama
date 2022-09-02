@@ -15,8 +15,6 @@ import java.util.List;
 @Table(name = "movie")
 public class Movie implements Serializable {
 
-    //https://dev.to/xrio/getting-started-with-spring-boot-creating-a-simple-movies-list-api-41l6
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

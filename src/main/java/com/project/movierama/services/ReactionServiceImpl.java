@@ -7,6 +7,7 @@ import com.project.movierama.entities.Reaction;
 import com.project.movierama.entities.User;
 import com.project.movierama.enums.UserReaction;
 import com.project.movierama.exceptions.BadRequestException;
+import com.project.movierama.exceptions.InvalidRequestException;
 import com.project.movierama.mappers.ReactionMapper;
 import com.project.movierama.repositories.MovieRepository;
 import com.project.movierama.repositories.ReactionRepository;
@@ -45,12 +46,19 @@ public class ReactionServiceImpl implements ReactionService {
         Movie movie = movieRepository.findById(reactionRequestDto.getMovieId())
                 .orElseThrow(() -> new BadRequestException("Movie with id " + reactionRequestDto.getMovieId() + " does not exist."));
 
-        Reaction reaction = new Reaction();
-        reaction.setUser(user);
-        reaction.setMovie(movie);
-        reaction.setLike(reactionRequestDto.getLike());
+        if (movie.getUser().equals(user))
+            throw new BadRequestException("Users cannot vote for movies they have added.");
 
-        return buildReactionDto(reactionRepository.save(reaction));
+        if (!reactionRepository.existsByUserAndMovie(user, movie)) {
+            Reaction reaction = new Reaction();
+            reaction.setUser(user);
+            reaction.setMovie(movie);
+            reaction.setLike(reactionRequestDto.getLike());
+
+            return buildReactionDto(reactionRepository.save(reaction));
+        } else {
+            throw new InvalidRequestException("User " + user.getUsername() + " has already voted for this movie.");
+        }
     }
 
     @Override

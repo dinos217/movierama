@@ -56,6 +56,6 @@ public class MovieController {
         Sort sort = Sort.by(Sort.Direction.fromString(direction), sortBy);
         Pageable pageable = PageRequest.of(page, pageSize, sort);
 
-        return movieService.findAll(pageable);
+        return movieService.findAllByUser(pageable, userId);
     }
 }
