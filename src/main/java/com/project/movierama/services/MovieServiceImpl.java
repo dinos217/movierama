@@ -43,8 +43,8 @@ public class MovieServiceImpl implements MovieService {
     public MovieResponseDto save(MovieRequestDto movieDto) {
 
         if (movieRepository.existsByTitleAndReleaseYear(movieDto.getTitle(), movieDto.getReleaseYear())) {
-            logger.info("Movie: " + movieDto.getTitle() + " is already added by another user.");
-            throw new InvalidRequestException("Movie is already added by another user.");
+            logger.info("Movie: " + movieDto.getTitle() + " has already been added.");
+            throw new InvalidRequestException("Movie has already been added.");
         }
 
         User addedByUser = userRepository.findById(movieDto.getUserId())
