@@ -41,6 +41,6 @@ public class AuthenticationController {
 
     @GetMapping("/dashboard")
     public String dashboard() {
-        return "the f* dashboard mf";
+        return "this is the dashbooooard";
     }
 }
