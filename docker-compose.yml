@@ -1,3 +1,5 @@
+version: '3'
+
 services:
   app:
     image: 'movierama:latest'
@@ -5,7 +7,7 @@ services:
       context: .
     container_name: movierama
     ports:
-      - 8080:8080
+      - "8080:8080"
     depends_on:
       - postgresqldb
     environment:
@@ -20,6 +22,6 @@ services:
       - "5432:5432"
     container_name: postgresqldb
     environment:
-      - POSTGRES_DB=postgres
+      - POSTGRES_DB=movierama
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
