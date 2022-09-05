@@ -38,9 +38,4 @@ public class AuthenticationController {
             throw new BadCredentialsException("Invalid credentials.");
         }
     }
-
-    @GetMapping("/dashboard")
-    public String dashboard() {
-        return "this is the dashbooooard";
-    }
 }
