@@ -6,3 +6,9 @@ It is written using Java 17 and the services are exposed with a REST API.
 Run maven goals `clean` and `install`.
 Head to the directory of movierama where the docker-compose file exists and open a terminal window.
 There run the command `docker-compose up` and now the application listens to your `localhost:8080`.
+
+## Understanding and Testing the application
+The documentation and the endpoints collection were exported from Postman. 
+- Here you may find the [Documentation](https://documenter.getpostman.com/view/7555836/UzR1JN4n](https://documenter.getpostman.com/view/7555836/VV4uyyGB#1e052ea9-8564-4e63-8050-9d1951581b93)
+- and the [Postman Collection](https://github.com/dinos217/survey-cow/files/9155138/SurveyCow.Endpoints.postman_collection.zip)
+
