@@ -18,8 +18,6 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-//    private UserService userService;
-
     private MovieramaUserDetailsService userDetailsService;
 
     @Autowired
@@ -37,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .antMatchers("/users/**", "/login").permitAll()
+                .antMatchers("/users/**", "/login", "/home").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic(withDefaults());

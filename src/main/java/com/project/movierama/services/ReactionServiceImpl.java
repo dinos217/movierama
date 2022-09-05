@@ -71,7 +71,6 @@ public class ReactionServiceImpl implements ReactionService {
                 .orElseThrow(() -> new BadRequestException("Movie with id " + reactionRequestDto.getMovieId() + " does not exist."));
 
         Reaction reaction = reactionRepository.findByUserAndMovie(user, movie);
-//        reaction.setLike(!reaction.getLike());
         reaction.setLike(reactionRequestDto.getLike());
 
         return buildReactionDto(reactionRepository.save(reaction));

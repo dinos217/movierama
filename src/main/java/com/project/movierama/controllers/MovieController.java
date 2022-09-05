@@ -48,9 +48,9 @@ public class MovieController {
     }
 
     @GetMapping(value = "/added-by-user/{userId}")
-    Page<MovieResponseDto> findAll(@PathVariable Long userId,
-                                   @RequestParam Integer page, @RequestParam Integer pageSize,
-                                   @RequestParam String sortBy, @RequestParam String direction) {
+    Page<MovieResponseDto> findAllByUser(@PathVariable Long userId,
+                                         @RequestParam Integer page, @RequestParam Integer pageSize,
+                                         @RequestParam String sortBy, @RequestParam String direction) {
 
         logger.info("Started finding all movies added by user: " + userId);
 

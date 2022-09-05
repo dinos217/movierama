@@ -24,6 +24,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Service
+@Transactional
 public class MovieServiceImpl implements MovieService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -38,7 +39,6 @@ public class MovieServiceImpl implements MovieService {
         this.userRepository = userRepository;
     }
 
-    @Transactional
     @Override
     public MovieResponseDto save(MovieRequestDto movieDto) {
 
@@ -69,9 +69,10 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public Page<MovieResponseDto> findAllByUser(Pageable pageable, Long id) {
 
-        if (!userRepository.existsById(id)) throw new BadRequestException("User with id " + id + " does not exist.");
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new BadRequestException("User with id " + id + " does not exist."));
 
-        Page<Movie> moviesFromDb = movieRepository.findAllByUser(id, pageable);
+        Page<Movie> moviesFromDb = movieRepository.findAllByUser(user, pageable);
 
         return buildResponseListPaged(pageable, moviesFromDb);
     }
